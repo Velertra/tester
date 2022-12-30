@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+</head>
+<body>
+
+  <script>
+
+    /* const loopArrays = document.querySelector('#loopArrays');
+                             loopArrays.addEventListener('click', () => {
+                               loopThruArrays()
+                             });
+ 
+                             */
+     
+     let myLibrary = ['mock','anothermock'];
+ 
+ 
+ 
+     function book() {
+ 
+       // the constructor?
+ 
+     }
+ 
+ 
+ 
+     function addBookToLibrary(x) {      //adds x to myLibrary
+        this.x = myLibrary.push(x);
+         
+       
+       }
+ 
+ let text = "";
+ 
+       function loopThruArrays() {
+         
+         
+         for (let i = 0; i < myLibrary.length; i++) {
+           text += myLibrary[i];
+         }
+         return text
+ 
+ 
+                                                   //filters thru myLibrary
+ 
+                                   
+ 
+ 
+ 
+        // document.getElementById('books').innerHTML = listBook.join('');
+       }
+ 
+      // document.getElementById("myBtn").onclick = function(){loopThruArrays()};
+ 
+      document.getElementById('display').innerHTML = text;
+ 
+ 
+   </script>
+
+  <!--
+  <form onsubmit  ="return setAction(this)" method="get">
+    <div>
+      <label for="book_title">Book name thingy:</label>
+      <input type="text" id="book_title" placeholder="Book Name">
+    </div>
+    <div>
+      <label for="book_author">guy who wrote said book name thingy:</label>
+      <input type="text" id="author" placeholder="Book author">
+    </div>
+    <div>
+      <label for="book_rating">rating:</label>
+      <input type="text" id="rating" placeholder="Book rating">
+    </div>
+    
+    <div>  
+       <input id="submit" type="submit">
+     </div>
+
+  </form>
+-->
+
+
+  <button onclick="loopThuArrays()">clicker</button>
+  
+  
+  <ul id="display"></ul>
+
+
+
+  
+</body>
+  
+</html>
