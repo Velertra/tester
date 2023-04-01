@@ -1,96 +1,148 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Page Title</title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-  <script>
+  <body>
+  
 
-    /* const loopArrays = document.querySelector('#loopArrays');
-                             loopArrays.addEventListener('click', () => {
-                               loopThruArrays()
-                             });
- 
-                             */
-     
-     let myLibrary = ['mock','anothermock'];
- 
- 
- 
-     function book() {
- 
-       // the constructor?
- 
-     }
- 
- 
- 
-     function addBookToLibrary(x) {      //adds x to myLibrary
-        this.x = myLibrary.push(x);
-         
-       
-       }
- 
- let text = "";
- 
-       function loopThruArrays() {
-         
-         
-         for (let i = 0; i < myLibrary.length; i++) {
-           text += myLibrary[i];
-         }
-         return text
- 
- 
-                                                   //filters thru myLibrary
- 
-                                   
- 
- 
- 
-        // document.getElementById('books').innerHTML = listBook.join('');
-       }
- 
-      // document.getElementById("myBtn").onclick = function(){loopThruArrays()};
- 
-      document.getElementById('display').innerHTML = text;
- 
- 
-   </script>
+  <button class="open-button" onclick="openForm()">open up</button>
 
-  <!--
-  <form onsubmit  ="return setAction(this)" method="get">
+
+  <div class="pop_up_form" id="form">
+  <form class="myform" id="myform" method="get">
     <div>
-      <label for="book_title">Book name thingy:</label>
-      <input type="text" id="book_title" placeholder="Book Name">
+      <label for="book_title">Title:</label>
+      <input type="text" id="book_title" name="book_title" placeholder="Book Name">
     </div>
     <div>
-      <label for="book_author">guy who wrote said book name thingy:</label>
+      <label for="book_author">Who wrote This:</label>
       <input type="text" id="author" placeholder="Book author">
     </div>
     <div>
-      <label for="book_rating">rating:</label>
-      <input type="text" id="rating" placeholder="Book rating">
+      <label for="book_rating">Pages:</label>
+      <input type="text" id="pages_read" placeholder="Pages">
     </div>
-    
+    <div>
+      <label for="finished_pages">Read:</label>
+      <input type="text" id="finished_pages" placeholder="Done?">
+    </div>
+
     <div>  
-       <input id="submit" type="submit">
+       <input  id="submit" type="submit" >
      </div>
 
   </form>
--->
-
-
-  <button onclick="loopThuArrays()">clicker</button>
+</div>
   
-  
-  <ul id="display"></ul>
+    <div class="result" id="result"></div>
+
+
+    <script>
+
+      /* function book() {
+        this.title = 'fsfs'//document.getElementById("book_title").value;
+      console.log(title);
+      } */
+
+      function container() {
+        this.myLibrary = ['Living single', 'Friends'];
+        this.displayDiv = document.querySelector("#result")
+        this.removeAllChildNodes = function(parent) {
+          while (parent.firstChild) {
+            parent.removeChild(parent.firstChild)
+          }
+        };
+        this.addBookToLibrary = function(evt) {
+          this.evt = myLibrary.push(evt);
+          display();
+        };
+        this.form = document.getElementById('myform').addEventListener('submit', function(evt){
+           
+            titleNeeded = document.getElementById("book_title").value;            // pause the submit to store as
+                                                                                    //variable. then removes text.
+            evt.preventDefault();                                          
+            document.getElementById('book_title').value = '';
+            
+            authorNeeded = document.getElementById('author').value;               //function pulls value from the from 
+            evt.preventDefault();
+            document.getElementById('author').value = '';
+
+            pagesNeeded = document.getElementById('pages_read').value;    
+            evt.preventDefault();
+            document.getElementById('pages_read').value = '';
+
+            readNeeded = document.getElementById('finished_pages').value;    
+            evt.preventDefault();
+            document.getElementById('finished_pages').value = ''; 
+              
+            closeForm()
+
+              if(titleNeeded) {
+                  addBookToLibrary(titleNeeded);
+            }  
+        }); 
+         
+        this.display = function() {
+          removeAllChildNodes(displayDiv);
+          for (let x = 0; x < this.myLibrary.length; x++) {
+          bookDiv = document.createElement('div');                      //creates divs with each new array added to 'myLibrary'
+          bookDiv.classList.add("resultDiv")
+          bookDiv.setAttribute('id', x)
+          bookDiv.innerHTML = myLibrary[x];
+          result.appendChild(bookDiv);
+          
+        }
+        buttonDiv()
+      };
+        this.buttonDiv = function() {
+          for(let x = 0; x < myLibrary.length; x++) {
+            //console.log(myLibrary[x]);
+             let myDiv = document.getElementById(x);
+              let button = document.createElement('BUTTON');
+              let text = document.createTextNode("delete");
+              button.setAttribute('id', x);
+              let anotherContainer = document.getElementById(x);
+             // let newContainer = document.querySelector(myLibrary[x]);
+
+              button.appendChild(text);
+              myDiv.appendChild(button); 
+              button.classList.add(x);
+              button.onclick = function(){ anotherContainer.remove()};
+          }
+        };
+        this.openForm = function() {
+          document.getElementById("form").style.display = "block";
+        };
+        this.closeForm = function() {
+          document.getElementById("form").style.display = "none";
+        };
+     
+           return [display()];
+     };
+
+    
+     
+
+/*   let form = document.getElementById('myform');
+     form.addEventListener('submit',validateForm);
+
+   */
 
 
 
-  
-</body>
-  
-</html>
+     // book();
+  container(); //sending display.
+
+
+    </script>
+
+    
+  </body> 
+    
+  </html>
